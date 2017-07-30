@@ -1,0 +1,1789 @@
+['{\'Server\': \'openresty\', \'Date\': \'Fri, 28 Jul 2017 14:08:17 GMT\', \'Content-Type\': \'text/html; charset=utf-8\', \'Transfer-Encoding\': \'chunked\', \'Connection\': \'keep-alive\', \'Keep-Alive\': \'timeout=20\', \'Vary\': \'Accept-Encoding\', \'Cache-Control\': \'private, max-age=0, must-revalidate\', \'ETag\': \'W/"408ff756d99771453313090328dda620"\', \'Set-Cookie\': \'uuid=3768525b-8e5c-49c9-b62d-18890f335fd3; expires=Sat, 29-Jul-2017 14:08:17 GMT; path=/, avh=50477280; expires=Fri, 28-Jul-2017 15:08:17 GMT; path=/\', \'X-Powered-By\': \'PHP 5.4.28\', \'Content-Encoding\': \'gzip\'}utf-8\n', 'html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"', '\n', <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script src="http://static.blog.csdn.net/scripts/tingyun-rum.js?v2" type="text/javascript"></script>
+<link href="http://blog.csdn.net/u013366098/article/details/50477280" rel="canonical"/>
+<meta content="no-siteapp" http-equiv="Cache-Control"/><link href="#" media="handheld" rel="alternate"/>
+<meta content="5a59773ab8077d4a62bf469ab966a63b_1497598848" name="shenma-site-verification"/>
+<title>CentOS7（Linux）清理yum缓存 和释放内存方法 - u013366098的博客
+        - CSDN博客</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="清理yum缓存清理yum缓存使用yum clean 命令，yum clean 的参数有headers, packages, metadata, dbcache, plugins, expire-cache, rpmdb, allyum clean headers#清理/var/cache/yum的headersyum clean packages#清理/var/cache/yum下的软件包yum" name="description"/>
+<meta content="centos,yum,缓存" name="keywords"/>
+<script src="http://static.blog.csdn.net/scripts/blog_static_head.min.js" type="text/javascript"></script>
+<!--new top-->
+<!--new top-->
+<!-- ad begin -->
+<!-- ad end-->
+<link href="http://static.blog.csdn.net/skin/default/css/style.css?v=1.1" rel="Stylesheet" type="text/css"/>
+<link href="/u013366098/rss/list" id="RSSLink" rel="alternate" title="RSS" type="application/rss+xml"/>
+<link href="http://c.csdnimg.cn/public/favicon.ico" rel="shortcut icon"/>
+<link href="http://static.blog.csdn.net/scripts/SyntaxHighlighter/styles/default.css" rel="stylesheet" type="text/css"/>
+<link href="http://c.csdnimg.cn/blog/csdn_public_blog_detail.min.css" rel="stylesheet" type="text/css"/>
+<link href="http://static.blog.csdn.net/css/csdn_blog_detail.min.css" rel="stylesheet"/>
+<!-- 请置于所有广告位代码之前 -->
+<script src="http://dup.baidustatic.com/js/ds.js"></script>
+</meta></head>
+<body>
+<div class="tracking-ad" data-con="ad_content_2072" data-mod="ad_popu_72" data-mtp="62" data-order="40" data-view="true">
+<script defer="defer" id="popuLayer_js_q" src="http://ads.csdn.net/js/popuLayer.js" type="text/javascript"></script>
+<div id="layerd" style="position: fixed;bottom:0px;right:0px;line-height:0px;z-index:1000">
+<div class="J_close layer_close" style="display:;background-color:#efefef;padding:0px;color:#333;font:12px/24px Helvetica,Tahoma,Arial,sans-serif;text-align:right;">关闭</div><!-- 广告占位容器 --><div id="cpro_u2895327"></div></div>
+<script>  document.getElementById("popuLayer_js_q").onload = function () { var styObjd = styObj = { width: "300px", "height": parseInt(250) + 28 }; window.CSDN.Layer.PopuLayer("#layerd", { storageName: "layerd", styleObj: styObjd, total: 50, expoire: 1000 * 60 }); }</script><!-- 投放代码 --><script type="text/javascript">                    /*服务器频道首页置顶Banner960*90，创建于2014-7-3*/    (window.cproArray = window.cproArray || []).push({ id: "u2895327" });  </script> <script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+</div>
+<!-- 广告位开始 -->
+<!-- 广告位结束 -->
+<!--new top-->
+<script fixed="true" id="toolbar-tpl-scriptId" prod="blog" skin="black" src="http://c.csdnimg.cn/public/common/toolbar/js/html.js" type="text/javascript"></script>
+<!--new top-->
+<div id="container">
+<div id="header">
+<div class="header">
+<div id="blog_title">
+<h2>
+<a href="http://blog.csdn.net/u013366098">u013366098的博客</a></h2>
+<h3></h3>
+<div class="clear">
+</div>
+</div>
+<div class="clear">
+</div>
+</div>
+</div>
+<div id="navigator">
+<div class="navigator_bg">
+</div>
+<div class="navigator">
+<ul>
+<li id="btnContents"><a href="http://blog.csdn.net/u013366098?viewmode=contents"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_mulu'])">
+<img src="http://static.blog.csdn.net/images/ico_list.gif"/>目录视图</span></a></li>
+<li id="btnView"><a href="http://blog.csdn.net/u013366098?viewmode=list"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_zhaiyao'])">
+<img src="http://static.blog.csdn.net/images/ico_summary.gif"/>摘要视图</span></a></li>
+<li id="btnRss"><a href="http://blog.csdn.net/u013366098/rss/list"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_RSS'])">
+<img src="http://static.blog.csdn.net/images/ico_rss.gif"/>订阅</span></a></li>
+</ul>
+</div>
+</div>
+<script type="text/javascript">
+    var username = "u013366098";
+    var _blogger = username;
+    var blog_address = "http://blog.csdn.net/u013366098";
+    var static_host = "http://static.blog.csdn.net";
+    var currentUserName = "";  
+</script>
+<div id="body">
+<div id="main">
+<div class="main">
+<div class="ad_class">
+<div class="notice tracking-ad" data-mod="popu_3">
+<a href="http://blog.csdn.net/turingbooks/article/details/76034232">
+<font color="red"><strong>评论送书 | 7月书讯：众多畅销书升级！ </strong></font></a>
+
+    
+
+
+<a href="http://blog.csdn.net/blogdevteam/article/details/76215994">
+<font color="blue"><strong>CSDN日报20170727——《想提高团队技术，来试试这个套路！》 </strong></font></a>
+    
+
+
+<a href="http://blog.csdn.net/broadview2006/article/details/76145481">
+<font color="red"><strong>评论送书 | 机器学习、Java虚拟机、微信开发</strong></font></a>
+</div> </div>
+<script src="http://static.blog.csdn.net/scripts/category.js" type="text/javascript"></script>
+<script type="text/ecmascript">
+      window.quickReplyflag = true;
+      var isBole = false; 
+      var fasrc="http://my.csdn.net/my/favorite/miniadd?t=CentOS7%ef%bc%88Linux%ef%bc%89%e6%b8%85%e7%90%86yum%e7%bc%93%e5%ad%98+%e5%92%8c%e9%87%8a%e6%94%be%e5%86%85%e5%ad%98%e6%96%b9%e6%b3%95&u=http://blog.csdn.net/u013366098/article/details/50477280"
+    </script>
+<div class="details" id="article_details">
+<div class="article_title">
+<span class="ico ico_type_Original"></span>
+<h1>
+<span class="link_title"><a href="/u013366098/article/details/50477280">
+        CentOS7（Linux）清理yum缓存 和释放内存方法        
+           
+        </a>
+</span>
+</h1>
+</div>
+<div class="article_manage clearfix">
+<div class="article_l">
+<span class="link_categories">
+            标签：
+              <a href="http://www.csdn.net/tag/centos" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);" target="_blank">centos</a><a href="http://www.csdn.net/tag/yum" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);" target="_blank">yum</a><a href="http://www.csdn.net/tag/%e7%bc%93%e5%ad%98" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);" target="_blank">缓存</a><a href="http://www.csdn.net/tag/%e5%86%85%e5%ad%98" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);" target="_blank">内存</a>
+</span>
+</div>
+<div class="article_r">
+<span class="link_postdate">2016-01-07 16:31</span>
+<span class="link_view" title="阅读次数">5067人阅读</span>
+<span class="link_comments" title="评论次数"> <a href="#comments" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_pinglun'])">评论</a>(0)</span>
+<span class="link_collect tracking-ad" data-mod="popu_171"> <a href="javascript:void(0);" onclick="javascript:collectArticle('CentOS7%ef%bc%88Linux%ef%bc%89%e6%b8%85%e7%90%86yum%e7%bc%93%e5%ad%98+%e5%92%8c%e9%87%8a%e6%94%be%e5%86%85%e5%ad%98%e6%96%b9%e6%b3%95','50477280');return false;" title="收藏">收藏</a></span>
+<span class="link_report"> <a href="#report" onclick="javascript:report(50477280,2);return false;" title="举报">举报</a></span>
+</div>
+</div> <style type="text/css">        
+            .embody{
+                padding:10px 10px 10px;
+                margin:0 -20px;
+                border-bottom:solid 1px #ededed;                
+            }
+            .embody_b{
+                margin:0 ;
+                padding:10px 0;
+            }
+            .embody .embody_t,.embody .embody_c{
+                display: inline-block;
+                margin-right:10px;
+            }
+            .embody_t{
+                font-size: 12px;
+                color:#999;
+            }
+            .embody_c{
+                font-size: 12px;
+            }
+            .embody_c img,.embody_c em{
+                display: inline-block;
+                vertical-align: middle;               
+            }
+             .embody_c img{               
+                width:30px;
+                height:30px;
+            }
+            .embody_c em{
+                margin: 0 20px 0 10px;
+                color:#333;
+                font-style: normal;
+            }
+    </style>
+<script type="text/javascript">
+        $(function () {
+            try
+            {
+                var lib = eval("("+$("#lib").attr("value")+")");
+                var html = "";
+                if (lib.err == 0) {
+                    $.each(lib.data, function (i) {
+                        var obj = lib.data[i];
+                        //html += '<img src="' + obj.logo + '"/>' + obj.name + "&nbsp;&nbsp;";
+                        html += ' <a href="' + obj.url + '" target="_blank">';
+                        html += ' <img src="' + obj.logo + '">';
+                        html += ' <em><b>' + obj.name + '</b></em>';
+                        html += ' </a>';
+                    });
+                    if (html != "") {
+                        setTimeout(function () {
+                            $("#lib").html(html);                      
+                            $("#embody").show();
+                        }, 100);
+                    }
+                }      
+            } catch (err)
+            { }
+            
+        });
+    </script>
+<div class="category clearfix">
+<div class="category_l">
+<img src="http://static.blog.csdn.net/images/category_icon.jpg"/>
+<span>分类：</span>
+</div>
+<div class="category_r">
+<label onclick="GetCategoryArticles('5938899','u013366098','top','50477280');">
+<span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_fenlei']);">程序猿学习笔记<em>（27）</em></span>
+<img class="arrow-down" src="http://static.blog.csdn.net/images/arrow_triangle _down.jpg" style="display:inline;"/>
+<img class="arrow-up" src="http://static.blog.csdn.net/images/arrow_triangle_up.jpg" style="display:none;"/>
+<div class="subItem">
+<div class="subItem_t"><a href="http://blog.csdn.net/u013366098/article/category/5938899" target="_blank">作者同类文章</a><i class="J_close">X</i></div>
+<ul class="subItem_l" id="top_5938899">
+</ul>
+</div>
+</label>
+</div>
+</div>
+<div class="bog_copyright">
+<p class="copyright_p">版权声明：本文为博主原创文章，未经博主允许不得转载。</p>
+</div>
+<div class="article_content tracking-ad" data-dsm="post" data-mod="popu_307" id="article_content">
+<div class="markdown_views"><h2 id="清理yum缓存">清理yum缓存</h2>
+<p>清理yum缓存使用yum clean 命令，yum clean 的参数有headers, packages, metadata, dbcache, plugins, expire-cache, rpmdb, all</p>
+<pre class="prettyprint"><code class=" hljs r">yum clean headers  <span class="hljs-comment">#清理/var/cache/yum的headers</span>
+yum clean packages <span class="hljs-comment">#清理/var/cache/yum下的软件包</span>
+yum clean metadata
+<span class="hljs-keyword">...</span></code></pre>
+<h2 id="linux释放内存">Linux释放内存</h2>
+<p>释放网页缓存(To free pagecache):</p>
+<pre class="prettyprint"><code class=" hljs ruby">sync; echo <span class="hljs-number">1</span> &gt; <span class="hljs-regexp">/proc/sys</span><span class="hljs-regexp">/vm/drop</span>_caches</code></pre>
+<p>释放目录项和索引(To free dentries and inodes):</p>
+<pre class="prettyprint"><code class=" hljs ruby">sync; echo <span class="hljs-number">2</span> &gt; <span class="hljs-regexp">/proc/sys</span><span class="hljs-regexp">/vm/drop</span>_caches</code></pre>
+<p>释放网页缓存，目录项和索引（To free pagecache, dentries and inodes）:</p>
+<pre class="prettyprint"><code class=" hljs ruby">sync; echo <span class="hljs-number">3</span> &gt; <span class="hljs-regexp">/proc/sys</span><span class="hljs-regexp">/vm/drop</span>_caches</code></pre>
+<p>下面是我实际的数据。</p>
+<pre class="prettyprint"><code class=" hljs avrasm">[root@localhost ~]<span class="hljs-preprocessor"># free -m    #查看内存</span>
+              total        used        free      shared  buff/cache   available
+<span class="hljs-label">Mem:</span>            <span class="hljs-number">481</span>         <span class="hljs-number">224</span>         <span class="hljs-number">120</span>           <span class="hljs-number">1</span>         <span class="hljs-number">136</span>         <span class="hljs-number">202</span>
+<span class="hljs-label">Swap:</span>          <span class="hljs-number">1023</span>         <span class="hljs-number">283</span>         <span class="hljs-number">740</span>
+[root@localhost ~]<span class="hljs-preprocessor"># sync; echo 3 &gt; /proc/sys/vm/drop_caches </span>
+[root@localhost ~]<span class="hljs-preprocessor"># free -m    #从120到186，释放了66m的内存</span>
+              total        used        free      shared  buff/cache   available
+<span class="hljs-label">Mem:</span>            <span class="hljs-number">481</span>         <span class="hljs-number">209</span>         <span class="hljs-number">186</span>           <span class="hljs-number">1</span>          <span class="hljs-number">85</span>         <span class="hljs-number">222</span>
+<span class="hljs-label">Swap:</span>          <span class="hljs-number">1023</span>         <span class="hljs-number">283</span>         <span class="hljs-number">740</span>
+</code></pre></div>
+<script type="text/javascript">
+            $(function () {
+                $('pre.prettyprint code').each(function () {
+                    var lines = $(this).text().split('\n').length;
+                    var $numbering = $('<ul/>').addClass('pre-numbering').hide();
+                    $(this).addClass('has-numbering').parent().append($numbering);
+                    for (i = 1; i <= lines; i++) {
+                        $numbering.append($('<li/>').text(i));
+                    };
+                    $numbering.fadeIn(1700);
+                });
+            });
+        </script>
+</div>
+<!-- Baidu Button BEGIN -->
+<div class="bdsharebuttonbox tracking-ad" data-mod="popu_172" style="float: right;">
+<a class="bds_more" data-cmd="more" href="#" style="background-position:0 0 !important; background-image: url(http://bdimg.share.baidu.com/static/api/img/share/icons_0_16.png?v=d754dcc0.png) !important"></a>
+<a class="bds_qzone" data-cmd="qzone" href="#" style="background-position:0 -52px !important" title="分享到QQ空间"></a>
+<a class="bds_tsina" data-cmd="tsina" href="#" style="background-position:0 -104px !important" title="分享到新浪微博"></a>
+<a class="bds_tqq" data-cmd="tqq" href="#" style="background-position:0 -260px !important" title="分享到腾讯微博"></a>
+<a class="bds_renren" data-cmd="renren" href="#" style="background-position:0 -208px !important" title="分享到人人网"></a>
+<a class="bds_weixin" data-cmd="weixin" href="#" style="background-position:0 -1612px !important" title="分享到微信"></a>
+</div>
+<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+<!-- Baidu Button END -->
+<!--172.16.140.15-->
+<!-- Baidu Button BEGIN -->
+<script data="type=tools&amp;uid=1536434" id="bdshare_js" type="text/javascript"></script>
+<script id="bdshell_js" type="text/javascript"></script>
+<script type="text/javascript">
+    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->
+<div articleid="50477280" id="digg">
+<dl class="digg digg_disable" id="btnDigg" onclick="btndigga();">
+<dt>顶</dt>
+<dd>1</dd>
+</dl>
+<dl class="digg digg_disable" id="btnBury" onclick="btnburya();">
+<dt>踩</dt>
+<dd>0</dd>
+</dl>
+</div>
+<div class="tracking-ad" data-mod="popu_222"><a href="javascript:void(0);"> </a> </div>
+<div class="tracking-ad" data-mod="popu_223"> <a href="javascript:void(0);"> </a></div>
+<script type="text/javascript">
+        function btndigga() {
+            $(".tracking-ad[data-mod='popu_222'] a").click();
+        }
+        function btnburya() {
+            $(".tracking-ad[data-mod='popu_223'] a").click();
+        }
+            </script>
+<ul class="article_next_prev">
+<li class="prev_article"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian']);location.href='http://blog.csdn.net/u013366098/article/details/50476088';">上一篇</span><a href="http://blog.csdn.net/u013366098/article/details/50476088" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian'])">浏览器无法访问Linux</a></li>
+<li class="next_article"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian']);location.href='http://blog.csdn.net/u013366098/article/details/50477423';">下一篇</span><a href="http://blog.csdn.net/u013366098/article/details/50477423" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian'])">学习笔记：百度Web开发工程师笔试题+新浪PHP工程师笔试题</a></li>
+</ul>
+<div style="clear:both; height:10px;"></div>
+<div class="similar_article">
+<h4></h4>
+<div class="similar_c" style="margin:20px 0px 0px 0px">
+<div class="similar_c_t">
+                            相关文章推荐
+                        </div>
+<div class="similar_wrap tracking-ad" data-mod="popu_36">
+<ul class="similar_list fl">
+<li>
+<em>•</em>
+<a href="http://blog.csdn.net/nsrainbow/article/details/46813777" strategy="BlogCommendFromBaidu" target="_blank" title="如何有效的清理yum缓存">如何有效的清理yum缓存</a>
+</li>
+<li>
+<em>•</em>
+<a href="http://blog.csdn.net/huyoo/article/details/12188573" strategy="BlogCommendFromBaidu" target="_blank" title="python的nltk中文使用和学习资料汇总帮你入门提高">python的nltk中文使用和学习资料汇总帮你入门提高</a>
+</li>
+<li>
+<em>•</em>
+<a href="http://blog.csdn.net/u013371163/article/details/60469138" strategy="BlogCommendFromBaidu" target="_blank" title="DataBase --- Intellij IDEA 14.1.4使用Java连接SQL Server教程">DataBase --- Intellij IDEA 14.1.4使用Java连接SQL Server教程</a>
+</li>
+<li>
+<em>•</em>
+<a href="http://blog.csdn.net/gaojinshan/article/details/40706705" strategy="BlogCommendFromBaidu" target="_blank" title="CentOS，清理缓存（drop_caches）">CentOS，清理缓存（drop_caches）</a>
+</li>
+<li>
+<em>•</em>
+<a href="http://blog.csdn.net/shuyun123456789/article/details/53635933" strategy="BlogCommendFromBaidu" target="_blank" title="CentOS7清理yum缓存和释放内存方法">CentOS7清理yum缓存和释放内存方法</a>
+</li>
+</ul>
+<ul class="similar_list fr">
+<li>
+<em>•</em>
+<a href="http://blog.csdn.net/chenggong2dm/article/details/11557431" strategy="BlogCommendFromBaidu" target="_blank" title="Centos 内存占满 释放内存">Centos 内存占满 释放内存</a>
+</li>
+<li>
+<em>•</em>
+<a href="http://blog.csdn.net/qq_20480611/article/details/46839287" strategy="BlogCommendFromBaidu" target="_blank" title="Centos清理内存 内存回收释放及内存使用查看的相关命令">Centos清理内存 内存回收释放及内存使用查看的相关命令</a>
+</li>
+<li>
+<em>•</em>
+<a href="http://blog.csdn.net/sahusoft/article/details/4286030" strategy="BlogCommendFromBaidu" target="_blank" title="清除YUM缓存 还我磁盘空间">清除YUM缓存 还我磁盘空间</a>
+</li>
+<li>
+<em>•</em>
+<a href="http://blog.csdn.net/guang_jing/article/details/25772705" strategy="BlogCommendFromBaidu" target="_blank" title="Fedora Yum命令查询软件包及清除缓存">Fedora Yum命令查询软件包及清除缓存</a>
+</li>
+<li>
+<em>•</em>
+<a href="http://blog.csdn.net/eyefamily/article/details/7021991" strategy="BlogCommendFromBaidu" target="_blank" title="如何利用yum的缓存文件">如何利用yum的缓存文件</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div>
+<script type="text/javascript">
+            /*博客内容页下方Banner1-728*90，创建于2016-12-13*/
+            var cpro_id = "u2843949";
+        </script>
+<script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+</div>
+<div id="suggest"></div>
+<script language="javascript" type="text/javascript">     
+             $(function(){
+                 $.get("/u013366098/svc/GetSuggestContent/50477280",function(data){
+                     $("#suggest").html(data);
+                 });     
+             });             
+         </script>
+<dl class="blog-ass-articl tracking-ad" data-mod="popu_84" id="res-relatived">
+<dt><span>猜你在找</span></dt>
+<dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px; white-space: nowrap;">
+<a href="http://edu.csdn.net/course/detail/5084" strategy="undefined" target="_blank" title="【直播】机器学习&amp;深度学习系统实战（唐宇迪）">【直播】机器学习&amp;深度学习系统实战（唐宇迪）</a>
+</dd>
+<dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px; white-space: nowrap;">
+<a href="http://edu.csdn.net/course/detail/5219" strategy="undefined" target="_blank" title="【直播】Kaggle 神器：XGBoost 从基础到实战（冒教授）">【直播】Kaggle 神器：XGBoost 从基础到实战（冒教授）</a>
+</dd>
+<dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px; white-space: nowrap;">
+<a href="http://edu.csdn.net/course/detail/5222" strategy="undefined" target="_blank" title="【直播回放】深度学习基础与TensorFlow实践（王琛）">【直播回放】深度学习基础与TensorFlow实践（王琛）</a>
+</dd>
+<dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px; white-space: nowrap;">
+<a href="http://edu.csdn.net/huiyiCourse/series_detail/52" strategy="undefined" target="_blank" title="【直播】计算机视觉原理及实战（屈教授）">【直播】计算机视觉原理及实战（屈教授）</a>
+</dd>
+<dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px; white-space: nowrap;">
+<a href="http://edu.csdn.net/huiyiCourse/series_detail/48" strategy="undefined" target="_blank" title="【直播】机器学习之凸优化（马博士）">【直播】机器学习之凸优化（马博士）</a>
+</dd>
+<dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px; white-space: nowrap;">
+<a href="http://edu.csdn.net/huiyiCourse/series_detail/47" strategy="undefined" target="_blank" title="【直播】机器学习之矩阵（黄博士）">【直播】机器学习之矩阵（黄博士）</a>
+</dd>
+<dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px; white-space: nowrap;">
+<a href="http://edu.csdn.net/huiyiCourse/series_detail/46" strategy="undefined" target="_blank" title="【直播】机器学习之概率与统计推断（冒教授）">【直播】机器学习之概率与统计推断（冒教授）</a>
+</dd>
+<dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px; white-space: nowrap;">
+<a href="http://edu.csdn.net/huiyiCourse/series_detail/49" strategy="undefined" target="_blank" title="【直播】机器学习之数学基础">【直播】机器学习之数学基础</a>
+</dd>
+<dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px; white-space: nowrap;">
+<a href="http://edu.csdn.net/huiyiCourse/series_detail/44" strategy="undefined" target="_blank" title="【直播】TensorFlow实战进阶（智亮）">【直播】TensorFlow实战进阶（智亮）</a>
+</dd>
+<dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px; white-space: nowrap;">
+<a href="http://edu.csdn.net/huiyiCourse/series_detail/45" strategy="undefined" target="_blank" title="【直播】深度学习30天系统实训（唐宇迪）">【直播】深度学习30天系统实训（唐宇迪）</a>
+</dd>
+</dl>
+<!-- 广告位开始 -->
+<!-- 广告位结束 -->
+<div class="comment_class">
+<div class="panel_head" id="comment_title">
+<span class="see_comment">查看评论</span><a name="comments"></a></div>
+<div id="comment_list">
+</div>
+<div id="comment_bar">
+</div>
+<div id="comment_form">
+</div>
+<div class="announce">
+        * 以上用户言论只代表其个人观点，不代表CSDN网站的观点或立场<a name="reply"></a><a name="quote"></a></div>
+</div>
+<script type="text/javascript">
+    var fileName = '50477280';
+    var commentscount = 0;
+    var islock = false
+</script>
+<div id="ad_bot">
+</div>
+<div id="report_dialog">
+</div>
+<div id="d-top" style="bottom:60px;">
+<a class="btn btn-top q-reply" id="quick-reply" style="display:none;" title="快速回复">
+<img alt="快速回复" src="http://static.blog.csdn.net/images/blog-icon-reply.png"/>
+</a>
+<a class="btn btn-top backtop" id="d-top-a" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_huidaodingbu'])" style="" title="返回顶部">
+<img alt="TOP" src="http://static.blog.csdn.net/images/top.png"/>
+</a>
+</div>
+<script type="text/javascript">
+    $(function ()
+    {
+        $("#ad_frm_0").height("90px");
+        
+        setTimeout(function(){
+            $("#ad_frm_2").height("200px");
+        },1000);    
+    });
+  
+</script>
+<style type="text/css">
+    .tag_list
+    {
+        background: none repeat scroll 0 0 #FFFFFF;
+        border: 1px solid #D7CBC1;
+        color: #000000;
+        font-size: 12px;
+        line-height: 20px;
+        list-style: none outside none;
+        margin: 10px 2% 0 1%;
+        padding: 1px;
+    }
+    .tag_list h5
+    {
+        background: none repeat scroll 0 0 #E0DBD3;
+        color: #47381C;
+        font-size: 12px;
+        height: 24px;
+        line-height: 24px;
+        padding: 0 5px;
+        margin: 0;
+    }
+    .tag_list h5 a
+    {
+        color: #47381C;
+    }
+    .classify
+    {
+        margin: 10px 0;
+        padding: 4px 12px 8px;
+    }
+    .classify a
+    {
+        margin-right: 20px;
+        white-space: nowrap;
+    }
+</style>
+<div id="pop_win" style="display:none ;position: absolute; z-index: 10000; border: 1px solid rgb(220, 220, 220); top: 222.5px; left: 630px; opacity: 1; background: none 0px 0px repeat scroll rgb(255, 255, 255);">
+</div>
+<div id="popup_mask"></div>
+<style>
+    #popup_mask
+    {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        z-index: 9999;
+        left: 0px;
+        top: 0px;
+        opacity: 0.3;
+        filter: alpha(opacity=30);
+        display: none;
+    }
+
+</style>
+<script type="text/javascript">
+    $(function(){        
+        
+        setTimeout(function(){
+            $(".comment_body:contains('回复')").each(function(index,item){
+                var u=$(this).text().split('：')[0].toString().replace("回复","")
+                var thisComment=$(this);
+                if(u)
+                {
+                    $.getJSON("https://passport.csdn.net/get/nick?callback=?", {users: u}, function(a) {
+                        if(a!=null&&a.data!=null&&a.data.length>0)
+                        {
+                            nick=a.data[0].n; 
+                            if(u!=nick)
+                            {
+                                thisComment.text(thisComment.text().replace(u,nick));  
+                            }
+                        }       
+                    });  
+                }
+            });         
+
+        },200);  
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },5000);
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },10000);
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },15000);
+        
+        setTimeout(function(){
+            $("a img[src='http://js.tongji.linezing.com/stats.gif']").parent().css({"position":"absolute","left":"50%"});
+        },300);
+    });
+
+    function loginbox(){
+        var $logpop=$("#pop_win");
+        $logpop.html('<iframe src="https://passport.csdn.net/account/loginbox?service=http://static.blog.csdn.net/callback.htm" frameborder="0" height="600" width="400" scrolling="no"></iframe>');
+
+        $('#popup_mask').css({
+            opacity: 0.5,
+            width: $( document ).width() + 'px',
+            height:  $( document ).height() + 'px'
+        });
+        $('#popup_mask').css("display","block");
+ 
+        $logpop.css( {
+            top: ($( window ).height() - $logpop.height())/ 2  + $( window 
+       ).scrollTop() + 'px',
+            left:($( window ).width() - $logpop.width())/ 2
+        } );
+ 
+        setTimeout( function () {
+            $logpop.show();
+            $logpop.css( {
+                opacity: 1
+            } );
+        }, 200 );
+ 
+        $('#popup_mask').unbind("click");
+        $('#popup_mask').bind("click", function(){
+            $('#popup_mask').hide();
+            var $clopop = $("#pop_win");
+            $("#common_ask_div_sc").css("display","none");
+            $clopop.css( {
+                opacity: 0
+            } );
+            setTimeout( function () {
+                $clopop.hide();
+            }, 350 );
+            return false;
+        });
+    }   
+
+    var articletitle='CentOS7（Linux）清理yum缓存 和释放内存方法';
+
+</script>
+<div class="clear">
+</div>
+</div>
+</div>
+<div id="side">
+<div class="side">
+<div class="panel" id="panel_Profile">
+<ul class="panel_head"><span>个人资料</span></ul>
+<ul class="panel_body profile">
+<div id="blog_userface">
+<a href="http://my.csdn.net/u013366098" target="_blank">
+<img src="http://avatar.csdn.net/A/F/3/1_u013366098.jpg" style="max-width:90%" title="访问我的空间">
+</img></a>
+<br/>
+<span><a class="user_name" href="http://my.csdn.net/u013366098" target="_blank">u013366098</a></span>
+</div>
+<div class="interact">
+<a class="attent" href="javascript:void(0);" id="span_add_follow" title="[加关注]"></a>
+<a class="letter" href="javascript:void(0);" onclick="window.open('http://msg.csdn.net/letters/model?receiver=u013366098','_blank','height=350,width=700');_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_sixin'])" title="[发私信]"></a>
+</div>
+<div id="blog_medal">
+<div id="bms_box">
+<a target="_blank">
+<img alt="1" onmouseout="m_out_m()" onmouseover="m_over_m(this,4)" src="http://c.csdnimg.cn/jifen/images/xunzhang/xunzhang/chizhiyiheng.png"/>
+</a>
+</div>
+</div>
+<ul id="blog_rank">
+<li>访问：<span>55790次</span></li>
+<li>积分：<span>797</span> </li>
+<li>等级： <span style="position:relative;display:inline-block;z-index:1">
+<img alt="" id="leveImg" src="http://c.csdnimg.cn/jifen/images/xunzhang/jianzhang/blog3.png" style="vertical-align: middle;"/>
+<div id="smallTittle" style=" position: absolute;  left: -24px;  top: 25px;  text-align: center;  width: 101px;  height: 32px;  background-color: #fff;  line-height: 32px;  border: 2px #DDDDDD solid;  box-shadow: 0px 2px 2px rgba (0,0,0,0.1);  display: none;   z-index: 999;">
+<div style="left: 42%;  top: -8px;  position: absolute;  width: 0;  height: 0;  border-left: 10px solid transparent;  border-right: 10px solid transparent;  border-bottom: 8px solid #EAEAEA;"></div>
+            积分：797 </div>
+</span> </li>
+<li>排名：<span>千里之外</span></li>
+</ul>
+<ul id="blog_statistics">
+<li>原创：<span>25篇</span></li>
+<li>转载：<span>4篇</span></li>
+<li>译文：<span>0篇</span></li>
+<li>评论：<span>1条</span></li>
+</ul>
+</ul>
+</div>
+<div class="panel" id="panel_Search">
+<ul class="panel_head"><span>文章搜索</span></ul>
+<ul class="form_search">
+<form action="http://so.csdn.net/search" class="form_search csdn-tracking-statistics" data-mod="popu_306" id="frmSearch" target="_blank">
+<span><input class="blogsearch" id="inputSearch" title="请输入关键字" type="text"/></span>
+<input id="btnSubmit" title="search in blog" type="button" value="搜索"/>
+<input id="inputQ" name="q" type="hidden"/>
+<input name="t" type="hidden" value="blog"/>
+<a id="btnSearchBlog" target="_blank"></a>
+</form>
+</ul>
+</div>
+<script type="text/javascript">
+
+   
+    $(function () {
+        $("#btnSubmit").unbind("click");
+        $("#btnSubmit").click(function () {           
+            search();
+        });
+
+        $("#frmSearch").submit(function () {           
+            search();
+            return false;
+        });
+
+        function search()
+        {
+            if ($("#inputSearch").val() == "") {               
+                alert("请录入搜索关键词！");                         
+                return false;
+            }
+            //var url = "http://so.csdn.net/so/search/s.do?q=" + encodeURIComponent($("#inputSearch").val()) + "&u=" + username + "&t=blog";           
+            var url = "https://www.baidu.com/s?wd=" + encodeURIComponent($("#inputSearch").val()) + "%20site%3Ablog.csdn.net"
+            window.location.href = url;
+        }   
+    });
+</script><div class="panel" id="panel_Category">
+<ul class="panel_head"><span>文章分类</span></ul>
+<ul class="panel_body">
+<li>
+<a href="/u013366098/article/category/5938899" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">程序猿学习笔记</a><span>(28)</span>
+</li>
+<li>
+<a href="/u013366098/article/category/6069074" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">测试</a><span>(0)</span>
+</li>
+<li>
+<a href="/u013366098/article/category/6546793" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">全球购</a><span>(1)</span>
+</li>
+</ul>
+</div><div class="panel" id="panel_Archive">
+<ul class="panel_head"><span>文章存档</span></ul>
+<ul class="panel_body">
+<div id="archive_list">
+<!--归档统计-->
+<li><a href="/u013366098/article/month/2016/12">2016年12月</a><span>(1)</span></li><li><a href="/u013366098/article/month/2016/11">2016年11月</a><span>(1)</span></li><li><a href="/u013366098/article/month/2016/03">2016年03月</a><span>(1)</span></li><li><a href="/u013366098/article/month/2016/01">2016年01月</a><span>(26)</span></li>
+</div>
+</ul>
+</div>
+<div class="panel tracking-ad" data-mod="popu_340" id="hotarticls">
+<ul class="panel_head">
+<span>       
+阅读排行    </span>
+</ul>
+<ul class="panel_body itemlist">
+<li>
+<a href="/u013366098/article/details/50542517" title="Xshell连接linux（deepin）时提示ssh服务器拒绝了密码，请再试一次">Xshell连接linux（deepin）时提示ssh服务器拒绝了密码，请再试一次</a><span>(14073)</span>
+</li>
+<li>
+<a href="/u013366098/article/details/50468502" title="VMware安装Linux Mint17.3">VMware安装Linux Mint17.3</a><span>(6904)</span>
+</li>
+<li>
+<a href="/u013366098/article/details/50477280" title="CentOS7（Linux）清理yum缓存 和释放内存方法">CentOS7（Linux）清理yum缓存 和释放内存方法</a><span>(5055)</span>
+</li>
+<li>
+<a href="/u013366098/article/details/50481387" title="Linux Mint 17.3设置屏幕分辨率">Linux Mint 17.3设置屏幕分辨率</a><span>(4818)</span>
+</li>
+<li>
+<a href="/u013366098/article/details/50556651" title="atom 安装插件emmet和atom-miku">atom 安装插件emmet和atom-miku</a><span>(4560)</span>
+</li>
+<li>
+<a href="/u013366098/article/details/50568779" title="Atom编辑器中文汉化方法">Atom编辑器中文汉化方法</a><span>(3770)</span>
+</li>
+<li>
+<a href="/u013366098/article/details/50542418" title="Deepin（Ubuntu）使用root账户登录">Deepin（Ubuntu）使用root账户登录</a><span>(2825)</span>
+</li>
+<li>
+<a href="/u013366098/article/details/50481085" title="Linux Mint 17.3安装VMware Tools">Linux Mint 17.3安装VMware Tools</a><span>(1612)</span>
+</li>
+<li>
+<a href="/u013366098/article/details/50593282" title="deepin使用rvm安装ruby出现make: *** [build-ext] Error 2错误">deepin使用rvm安装ruby出现make: *** [build-ext] Error 2错误</a><span>(1427)</span>
+</li>
+<li>
+<a href="/u013366098/article/details/50535693" title="Deepin 安装nodejs">Deepin 安装nodejs</a><span>(1383)</span>
+</li>
+</ul>
+</div>
+<div class="panel tracking-ad" data-mod="popu_341" id="hotarticls2">
+<ul class="panel_head"><span>评论排行</span></ul>
+<ul class="panel_body itemlist">
+<li>
+<a href="/u013366098/article/details/50542517" title="Xshell连接linux（deepin）时提示ssh服务器拒绝了密码，请再试一次">Xshell连接linux（deepin）时提示ssh服务器拒绝了密码，请再试一次</a><span>(1)</span>
+</li>
+<li>
+<a href="/u013366098/article/details/50477799" title="centos错误提示：您在 /var/spool/mail/root 中有邮件">centos错误提示：您在 /var/spool/mail/root 中有邮件</a><span>(0)</span>
+</li>
+<li>
+<a href="/u013366098/article/details/50477423" title="学习笔记：百度Web开发工程师笔试题+新浪PHP工程师笔试题">学习笔记：百度Web开发工程师笔试题+新浪PHP工程师笔试题</a><span>(0)</span>
+</li>
+<li>
+<a href="/u013366098/article/details/50477280" title="CentOS7（Linux）清理yum缓存 和释放内存方法">CentOS7（Linux）清理yum缓存 和释放内存方法</a><span>(0)</span>
+</li>
+<li>
+<a href="/u013366098/article/details/50476088" title="浏览器无法访问Linux">浏览器无法访问Linux</a><span>(0)</span>
+</li>
+<li>
+<a href="/u013366098/article/details/50474436" title="CentOS7 卸载KDE桌面">CentOS7 卸载KDE桌面</a><span>(0)</span>
+</li>
+<li>
+<a href="/u013366098/article/details/50470825" title="Linux Mint17.3安装搜狗输入法">Linux Mint17.3安装搜狗输入法</a><span>(0)</span>
+</li>
+<li>
+<a href="/u013366098/article/details/50470211" title="Xshell无法连接VMware中的Linux Mint解决方法">Xshell无法连接VMware中的Linux Mint解决方法</a><span>(0)</span>
+</li>
+<li>
+<a href="/u013366098/article/details/50468502" title="VMware安装Linux Mint17.3">VMware安装Linux Mint17.3</a><span>(0)</span>
+</li>
+<li>
+<a href="/u013366098/article/details/53422909" title="微信二维码支付没走统一的回调函数，无法判断是否支付成功">微信二维码支付没走统一的回调函数，无法判断是否支付成功</a><span>(0)</span>
+</li>
+</ul>
+</div>
+<div class="panel tracking-ad" data-mod="popu_4" id="homepageArticles">
+<ul class="panel_head"><span>推荐文章</span></ul>
+<ul class="panel_body" id="ad_commend">
+<ul>
+<li><a href="http://blog.csdn.net/blogdevteam/article/details/76092129" target="_blank">* CSDN日报20170725——《新的开始，从研究生到入职亚马逊》</a></li>
+<li><a href="http://blog.csdn.net/javazejian/article/details/75043422" target="_blank">* 深入剖析基于并发AQS的重入锁(ReetrantLock)及其Condition实现原理</a></li>
+<li><a href="http://blog.csdn.net/jiangwei0910410003/article/details/75512732" target="_blank">* Android版本的"Wannacry"文件加密病毒样本分析(附带锁机)</a></li>
+<li><a href="http://blog.csdn.net/mindfloating/article/details/75948781" target="_blank">* 工作与生活真的可以平衡吗？</a></li>
+<li><a href="http://blog.csdn.net/poem_qianmo/article/details/75943714" target="_blank">* 《Real-Time Rendering 3rd》 提炼总结——高级着色：BRDF及相关技术</a></li>
+<li><a href="http://blog.csdn.net/dog250/article/details/75735806" target="_blank">* 《三体》读后思考-泰勒展开/维度打击/黑暗森林</a></li>
+</ul></ul>
+</div>
+<div class="panel" id="newcomments">
+<ul class="panel_head"><span>最新评论</span></ul>
+<ul class="panel_body itemlist">
+<li>
+<a href="/u013366098/article/details/50542517#comments">Xshell连接linux（deepin）时提示ssh服务器拒绝了密码，请再试一次</a>
+<p style="margin:0px;"><a class="user_name" href="/wxf2009817">wxf2009817</a>:
+啊啊啊啊啊啊啊啊
+    </p>
+</li>
+</ul>
+</div>
+</div>
+<div class="clear">
+</div>
+<!-- 广告位开始 --> <!-- 广告位结束 -->
+<div class="tracking-ad" data-con="ad_content_1260" data-mtp="63" data-order="40" data-view="true" style="width: 200px; height: 500px;">
+<div id="nav_show_top_stop" style="width: 200px;height: 500px;z-index:1000"><div id="cpro_u2734128"></div>
+<div id="cpro_u3031287"></div></div>
+</div>
+<script type="text/javascript">
+        setTimeout(function () {
+            var naviga_offsetTop = 0;
+            function naviga_stay_top() { var scrollTop = jQuery(document).scrollTop(); if (scrollTop > naviga_offsetTop) { jQuery("#nav_show_top_stop").css({ "position": "fixed" }); jQuery("#nav_show_top_stop").css({ "top": "0px" }); } else { jQuery("#nav_show_top_stop").css({ "position": "fixed" }); jQuery("#nav_show_top_stop").css({ "top": naviga_offsetTop - scrollTop + "px" }); } }
+            function onload_function() { naviga_offsetTop = jQuery("#nav_show_top_stop").position().top; jQuery(window).bind("scroll", naviga_stay_top); jQuery(window).bind("mousewheel", naviga_stay_top); jQuery(document).bind("scroll", naviga_stay_top); jQuery(document).bind("mousewheel", naviga_stay_top); } jQuery(document).ready(onload_function);
+
+        }, 200);
+    </script>
+<script type="text/javascript">(window.cproArray = window.cproArray || []).push({ id: "u2734128" });  </script>
+<script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+<script type="text/javascript">
+                       /*PC端-博客内容页左侧Button2-200*200-2017/7/10*/
+                       (window.cproArray = window.cproArray || []).push({ id: "u3031287" });
+</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+</div>
+<div class="clear">
+</div>
+</div>
+<script src="http://passport.csdn.net/content/loginbox/login.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+        function __get_code_toolbar(snippet_id) {
+            return $("<span class='tracking-ad' data-mod='popu_167'><a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "' target='_blank' title='在CODE上查看代码片'  style='text-indent:0;'><img src='https://code.csdn.net/assets/CODE_ico.png' width=12 height=12 alt='在CODE上查看代码片' style='position:relative;top:1px;left:2px;'/></a></span>"
+                    + "<span class='tracking-ad' data-mod='popu_170'><a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "/fork' target='_blank' title='派生到我的代码片' style='text-indent:0;'><img src='https://code.csdn.net/assets/ico_fork.svg' width=12 height=12 alt='派生到我的代码片' style='position:relative;top:2px;left:2px;'/></a></span>");
+        }
+        
+        $("[code_snippet_id]").each(function () {
+            __s_id = $(this).attr("code_snippet_id");
+            if (__s_id != null && __s_id != "" && __s_id != 0 && parseInt(__s_id) > 70020) {
+                __code_tool = __get_code_toolbar(__s_id);
+                $(this).prev().find(".tools").append(__code_tool);
+            }
+        });
+
+        $(".bar").show();
+    });
+</script>
+</div>
+<!--new top-->
+<!--new top-->
+<script src="http://static.blog.csdn.net/public/res/bower-libs/MathJax/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+<script type="text/javascript">
+              //$(function () {
+              //    setTimeout(function () {
+              //        var searchtitletags = articletitle + ',' + $("#tags").html();
+              //        searchService({
+              //            index: 'blog',
+              //            query: searchtitletags,
+              //            from: 5,
+              //            size: 5,
+              //            appendTo: '#res',
+              //            url: 'recommend',
+              //            his: 2,
+              //            client: "blog_cf_enhance",
+              //            tmpl: '<dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;"><a href="#{ url }" title="#{ title }" strategy="#{ strategy }">#{ title }</a></dd>'
+              //        });
+              //    }, 1000);
+              //});
+
+         </script>
+<script src="http://static.blog.csdn.net/scripts/csdn_blog_detail.min.js" type="text/javascript"></script>
+<script src="http://c.csdnimg.cn/blog/csdn_public_blog_detail.min.js?20170719001" type="text/javascript"></script>
+<script src="http://medal.blog.csdn.net/showblogmedal.ashx?blogid=5554717" type="text/javascript"></script>
+<div id="a52b5334d" style="width: 1px; height: 1px; display: none;">
+<script id="adJs52b5334"></script>
+<script>document.getElementById("adJs52b5334").src = "http://ads.csdn.net/js/opt/52b5334.js?t=" + Math.random();</script>
+</div>
+<div class="pop_CA_cover" style="display:none"></div>
+<div class="pop pop_CA" style="display:none">
+<div class="CA_header">
+            收藏助手
+            <span class="cancel_icon" id="fapancle" onclick="$('.pop_CA').hide();$('.pop_CA_cover').hide();"></span>
+</div>
+<iframe frameborder="0" height="360" id="fa" scrolling="no" src="" width="100%"></iframe>
+</div>
+<script type="text/javascript">
+
+            $(function () {
+                var fromjs = $("#fromjs");
+                if (fromjs.length > 0) {
+                    $("#fromjs .markdown_views pre").addClass("prettyprint");
+                    prettyPrint();
+
+                    $('pre.prettyprint code').each(function () {
+                        var lines = $(this).text().split('\n').length;
+                        var $numbering = $('<ul/>').addClass('pre-numbering').hide();
+                        $(this).addClass('has-numbering').parent().append($numbering);
+                        for (i = 1; i <= lines; i++) {
+                            $numbering.append($('<li/>').text(i));
+                        };
+                        $numbering.fadeIn(1700);
+                    });
+
+                    $('.pre-numbering li').css("color", "#999");
+                }
+            });
+
+            $(".markdown_views a[target!='_blank']").attr("target", "_blank");
+
+            //$(".toc a[target='_blank']").attr("target", "");
+
+            setTimeout(function () {
+                $(".toc a[target='_blank']").attr("target", "");
+            }, 500);
+
+        </script>
+</body>
+</html>, '\n']{'Server': 'openresty', 'Date': 'Fri, 28 Jul 2017 14:08:17 GMT', 'Content-Type': 'text/html; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=20', 'Vary': 'Accept-Encoding', 'Cache-Control': 'private, max-age=0, must-revalidate', 'ETag': 'W/"408ff756d99771453313090328dda620"', 'Set-Cookie': 'uuid=3768525b-8e5c-49c9-b62d-18890f335fd3; expires=Sat, 29-Jul-2017 14:08:17 GMT; path=/, avh=50477280; expires=Fri, 28-Jul-2017 15:08:17 GMT; path=/', 'X-Powered-By': 'PHP 5.4.28', 'Content-Encoding': 'gzip'}utf-8
+
+
+
+
+
+
+
+CentOS7（Linux）清理yum缓存 和释放内存方法 - u013366098的博客
+        - CSDN博客
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+关闭
+  document.getElementById("popuLayer_js_q").onload = function () { var styObjd = styObj = { width: "300px", "height": parseInt(250) + 28 }; window.CSDN.Layer.PopuLayer("#layerd", { storageName: "layerd", styleObj: styObjd, total: 50, expoire: 1000 * 60 }); }                    /*服务器频道首页置顶Banner960*90，创建于2014-7-3*/    (window.cproArray = window.cproArray || []).push({ id: "u2895327" });   
+
+
+
+
+
+
+
+
+
+
+
+u013366098的博客
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+目录视图
+
+摘要视图
+
+订阅
+
+
+
+
+    var username = "u013366098";
+    var _blogger = username;
+    var blog_address = "http://blog.csdn.net/u013366098";
+    var static_host = "http://static.blog.csdn.net";
+    var currentUserName = "";  
+
+
+
+
+
+
+
+评论送书 | 7月书讯：众多畅销书升级！ 
+
+    
+
+
+
+CSDN日报20170727——《想提高团队技术，来试试这个套路！》 
+    
+
+
+
+评论送书 | 机器学习、Java虚拟机、微信开发
+ 
+
+
+      window.quickReplyflag = true;
+      var isBole = false; 
+      var fasrc="http://my.csdn.net/my/favorite/miniadd?t=CentOS7%ef%bc%88Linux%ef%bc%89%e6%b8%85%e7%90%86yum%e7%bc%93%e5%ad%98+%e5%92%8c%e9%87%8a%e6%94%be%e5%86%85%e5%ad%98%e6%96%b9%e6%b3%95&u=http://blog.csdn.net/u013366098/article/details/50477280"
+    
+
+
+
+
+
+        CentOS7（Linux）清理yum缓存 和释放内存方法        
+           
+        
+
+
+
+
+
+
+            标签：
+              centosyum缓存内存
+
+
+
+2016-01-07 16:31
+5067人阅读
+ 评论(0)
+ 收藏
+ 举报
+
+         
+            .embody{
+                padding:10px 10px 10px;
+                margin:0 -20px;
+                border-bottom:solid 1px #ededed;                
+            }
+            .embody_b{
+                margin:0 ;
+                padding:10px 0;
+            }
+            .embody .embody_t,.embody .embody_c{
+                display: inline-block;
+                margin-right:10px;
+            }
+            .embody_t{
+                font-size: 12px;
+                color:#999;
+            }
+            .embody_c{
+                font-size: 12px;
+            }
+            .embody_c img,.embody_c em{
+                display: inline-block;
+                vertical-align: middle;               
+            }
+             .embody_c img{               
+                width:30px;
+                height:30px;
+            }
+            .embody_c em{
+                margin: 0 20px 0 10px;
+                color:#333;
+                font-style: normal;
+            }
+    
+
+        $(function () {
+            try
+            {
+                var lib = eval("("+$("#lib").attr("value")+")");
+                var html = "";
+                if (lib.err == 0) {
+                    $.each(lib.data, function (i) {
+                        var obj = lib.data[i];
+                        //html += '<img src="' + obj.logo + '"/>' + obj.name + "&nbsp;&nbsp;";
+                        html += ' <a href="' + obj.url + '" target="_blank">';
+                        html += ' <img src="' + obj.logo + '">';
+                        html += ' <em><b>' + obj.name + '</b></em>';
+                        html += ' </a>';
+                    });
+                    if (html != "") {
+                        setTimeout(function () {
+                            $("#lib").html(html);                      
+                            $("#embody").show();
+                        }, 100);
+                    }
+                }      
+            } catch (err)
+            { }
+            
+        });
+    
+
+
+
+分类：
+
+
+
+程序猿学习笔记（27）
+
+
+
+作者同类文章X
+
+
+
+
+
+
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+
+清理yum缓存
+清理yum缓存使用yum clean 命令，yum clean 的参数有headers, packages, metadata, dbcache, plugins, expire-cache, rpmdb, all
+yum clean headers  #清理/var/cache/yum的headers
+yum clean packages #清理/var/cache/yum下的软件包
+yum clean metadata
+...
+Linux释放内存
+释放网页缓存(To free pagecache):
+sync; echo 1 > /proc/sys/vm/drop_caches
+释放目录项和索引(To free dentries and inodes):
+sync; echo 2 > /proc/sys/vm/drop_caches
+释放网页缓存，目录项和索引（To free pagecache, dentries and inodes）:
+sync; echo 3 > /proc/sys/vm/drop_caches
+下面是我实际的数据。
+[root@localhost ~]# free -m    #查看内存
+              total        used        free      shared  buff/cache   available
+Mem:            481         224         120           1         136         202
+Swap:          1023         283         740
+[root@localhost ~]# sync; echo 3 > /proc/sys/vm/drop_caches 
+[root@localhost ~]# free -m    #从120到186，释放了66m的内存
+              total        used        free      shared  buff/cache   available
+Mem:            481         209         186           1          85         222
+Swap:          1023         283         740
+
+
+            $(function () {
+                $('pre.prettyprint code').each(function () {
+                    var lines = $(this).text().split('\n').length;
+                    var $numbering = $('<ul/>').addClass('pre-numbering').hide();
+                    $(this).addClass('has-numbering').parent().append($numbering);
+                    for (i = 1; i <= lines; i++) {
+                        $numbering.append($('<li/>').text(i));
+                    };
+                    $numbering.fadeIn(1700);
+                });
+            });
+        
+
+
+
+
+
+
+
+
+
+
+window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+
+
+
+
+
+
+    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+
+
+
+
+顶
+1
+
+
+踩
+0
+
+
+  
+  
+
+        function btndigga() {
+            $(".tracking-ad[data-mod='popu_222'] a").click();
+        }
+        function btnburya() {
+            $(".tracking-ad[data-mod='popu_223'] a").click();
+        }
+            
+
+上一篇浏览器无法访问Linux
+下一篇学习笔记：百度Web开发工程师笔试题+新浪PHP工程师笔试题
+
+
+
+
+
+
+                            相关文章推荐
+                        
+
+
+
+•
+如何有效的清理yum缓存
+
+
+•
+python的nltk中文使用和学习资料汇总帮你入门提高
+
+
+•
+DataBase --- Intellij IDEA 14.1.4使用Java连接SQL Server教程
+
+
+•
+CentOS，清理缓存（drop_caches）
+
+
+•
+CentOS7清理yum缓存和释放内存方法
+
+
+
+
+•
+Centos 内存占满 释放内存
+
+
+•
+Centos清理内存 内存回收释放及内存使用查看的相关命令
+
+
+•
+清除YUM缓存 还我磁盘空间
+
+
+•
+Fedora Yum命令查询软件包及清除缓存
+
+
+•
+如何利用yum的缓存文件
+
+
+
+
+
+
+
+
+            /*博客内容页下方Banner1-728*90，创建于2016-12-13*/
+            var cpro_id = "u2843949";
+        
+
+
+
+     
+             $(function(){
+                 $.get("/u013366098/svc/GetSuggestContent/50477280",function(data){
+                     $("#suggest").html(data);
+                 });     
+             });             
+         
+
+猜你在找
+
+【直播】机器学习&深度学习系统实战（唐宇迪）
+
+
+【直播】Kaggle 神器：XGBoost 从基础到实战（冒教授）
+
+
+【直播回放】深度学习基础与TensorFlow实践（王琛）
+
+
+【直播】计算机视觉原理及实战（屈教授）
+
+
+【直播】机器学习之凸优化（马博士）
+
+
+【直播】机器学习之矩阵（黄博士）
+
+
+【直播】机器学习之概率与统计推断（冒教授）
+
+
+【直播】机器学习之数学基础
+
+
+【直播】TensorFlow实战进阶（智亮）
+
+
+【直播】深度学习30天系统实训（唐宇迪）
+
+
+
+
+
+
+查看评论
+
+
+
+
+
+
+
+        * 以上用户言论只代表其个人观点，不代表CSDN网站的观点或立场
+
+
+    var fileName = '50477280';
+    var commentscount = 0;
+    var islock = false
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    $(function ()
+    {
+        $("#ad_frm_0").height("90px");
+        
+        setTimeout(function(){
+            $("#ad_frm_2").height("200px");
+        },1000);    
+    });
+  
+
+
+    .tag_list
+    {
+        background: none repeat scroll 0 0 #FFFFFF;
+        border: 1px solid #D7CBC1;
+        color: #000000;
+        font-size: 12px;
+        line-height: 20px;
+        list-style: none outside none;
+        margin: 10px 2% 0 1%;
+        padding: 1px;
+    }
+    .tag_list h5
+    {
+        background: none repeat scroll 0 0 #E0DBD3;
+        color: #47381C;
+        font-size: 12px;
+        height: 24px;
+        line-height: 24px;
+        padding: 0 5px;
+        margin: 0;
+    }
+    .tag_list h5 a
+    {
+        color: #47381C;
+    }
+    .classify
+    {
+        margin: 10px 0;
+        padding: 4px 12px 8px;
+    }
+    .classify a
+    {
+        margin-right: 20px;
+        white-space: nowrap;
+    }
+
+
+
+
+
+    #popup_mask
+    {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        z-index: 9999;
+        left: 0px;
+        top: 0px;
+        opacity: 0.3;
+        filter: alpha(opacity=30);
+        display: none;
+    }
+
+
+
+    $(function(){        
+        
+        setTimeout(function(){
+            $(".comment_body:contains('回复')").each(function(index,item){
+                var u=$(this).text().split('：')[0].toString().replace("回复","")
+                var thisComment=$(this);
+                if(u)
+                {
+                    $.getJSON("https://passport.csdn.net/get/nick?callback=?", {users: u}, function(a) {
+                        if(a!=null&&a.data!=null&&a.data.length>0)
+                        {
+                            nick=a.data[0].n; 
+                            if(u!=nick)
+                            {
+                                thisComment.text(thisComment.text().replace(u,nick));  
+                            }
+                        }       
+                    });  
+                }
+            });         
+
+        },200);  
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },5000);
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },10000);
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },15000);
+        
+        setTimeout(function(){
+            $("a img[src='http://js.tongji.linezing.com/stats.gif']").parent().css({"position":"absolute","left":"50%"});
+        },300);
+    });
+
+    function loginbox(){
+        var $logpop=$("#pop_win");
+        $logpop.html('<iframe src="https://passport.csdn.net/account/loginbox?service=http://static.blog.csdn.net/callback.htm" frameborder="0" height="600" width="400" scrolling="no"></iframe>');
+
+        $('#popup_mask').css({
+            opacity: 0.5,
+            width: $( document ).width() + 'px',
+            height:  $( document ).height() + 'px'
+        });
+        $('#popup_mask').css("display","block");
+ 
+        $logpop.css( {
+            top: ($( window ).height() - $logpop.height())/ 2  + $( window 
+       ).scrollTop() + 'px',
+            left:($( window ).width() - $logpop.width())/ 2
+        } );
+ 
+        setTimeout( function () {
+            $logpop.show();
+            $logpop.css( {
+                opacity: 1
+            } );
+        }, 200 );
+ 
+        $('#popup_mask').unbind("click");
+        $('#popup_mask').bind("click", function(){
+            $('#popup_mask').hide();
+            var $clopop = $("#pop_win");
+            $("#common_ask_div_sc").css("display","none");
+            $clopop.css( {
+                opacity: 0
+            } );
+            setTimeout( function () {
+                $clopop.hide();
+            }, 350 );
+            return false;
+        });
+    }   
+
+    var articletitle='CentOS7（Linux）清理yum缓存 和释放内存方法';
+
+
+
+
+
+
+
+
+
+个人资料
+
+
+
+
+
+
+u013366098
+
+
+
+
+
+
+
+
+
+
+
+
+
+访问：55790次
+积分：797 
+等级： 
+
+
+
+            积分：797 
+ 
+排名：千里之外
+
+
+原创：25篇
+转载：4篇
+译文：0篇
+评论：1条
+
+
+
+
+文章搜索
+
+
+
+
+
+
+
+
+
+
+
+
+   
+    $(function () {
+        $("#btnSubmit").unbind("click");
+        $("#btnSubmit").click(function () {           
+            search();
+        });
+
+        $("#frmSearch").submit(function () {           
+            search();
+            return false;
+        });
+
+        function search()
+        {
+            if ($("#inputSearch").val() == "") {               
+                alert("请录入搜索关键词！");                         
+                return false;
+            }
+            //var url = "http://so.csdn.net/so/search/s.do?q=" + encodeURIComponent($("#inputSearch").val()) + "&u=" + username + "&t=blog";           
+            var url = "https://www.baidu.com/s?wd=" + encodeURIComponent($("#inputSearch").val()) + "%20site%3Ablog.csdn.net"
+            window.location.href = url;
+        }   
+    });
+
+文章分类
+
+
+程序猿学习笔记(28)
+
+
+测试(0)
+
+
+全球购(1)
+
+
+
+文章存档
+
+
+
+2016年12月(1)2016年11月(1)2016年03月(1)2016年01月(26)
+
+
+
+
+
+       
+阅读排行    
+
+
+
+Xshell连接linux（deepin）时提示ssh服务器拒绝了密码，请再试一次(14073)
+
+
+VMware安装Linux Mint17.3(6904)
+
+
+CentOS7（Linux）清理yum缓存 和释放内存方法(5055)
+
+
+Linux Mint 17.3设置屏幕分辨率(4818)
+
+
+atom 安装插件emmet和atom-miku(4560)
+
+
+Atom编辑器中文汉化方法(3770)
+
+
+Deepin（Ubuntu）使用root账户登录(2825)
+
+
+Linux Mint 17.3安装VMware Tools(1612)
+
+
+deepin使用rvm安装ruby出现make: *** [build-ext] Error 2错误(1427)
+
+
+Deepin 安装nodejs(1383)
+
+
+
+
+评论排行
+
+
+Xshell连接linux（deepin）时提示ssh服务器拒绝了密码，请再试一次(1)
+
+
+centos错误提示：您在 /var/spool/mail/root 中有邮件(0)
+
+
+学习笔记：百度Web开发工程师笔试题+新浪PHP工程师笔试题(0)
+
+
+CentOS7（Linux）清理yum缓存 和释放内存方法(0)
+
+
+浏览器无法访问Linux(0)
+
+
+CentOS7 卸载KDE桌面(0)
+
+
+Linux Mint17.3安装搜狗输入法(0)
+
+
+Xshell无法连接VMware中的Linux Mint解决方法(0)
+
+
+VMware安装Linux Mint17.3(0)
+
+
+微信二维码支付没走统一的回调函数，无法判断是否支付成功(0)
+
+
+
+
+推荐文章
+
+
+* CSDN日报20170725——《新的开始，从研究生到入职亚马逊》
+* 深入剖析基于并发AQS的重入锁(ReetrantLock)及其Condition实现原理
+* Android版本的"Wannacry"文件加密病毒样本分析(附带锁机)
+* 工作与生活真的可以平衡吗？
+* 《Real-Time Rendering 3rd》 提炼总结——高级着色：BRDF及相关技术
+* 《三体》读后思考-泰勒展开/维度打击/黑暗森林
+
+
+
+最新评论
+
+
+Xshell连接linux（deepin）时提示ssh服务器拒绝了密码，请再试一次
+wxf2009817:
+啊啊啊啊啊啊啊啊
+    
+
+
+
+
+
+
+ 
+
+
+
+
+
+        setTimeout(function () {
+            var naviga_offsetTop = 0;
+            function naviga_stay_top() { var scrollTop = jQuery(document).scrollTop(); if (scrollTop > naviga_offsetTop) { jQuery("#nav_show_top_stop").css({ "position": "fixed" }); jQuery("#nav_show_top_stop").css({ "top": "0px" }); } else { jQuery("#nav_show_top_stop").css({ "position": "fixed" }); jQuery("#nav_show_top_stop").css({ "top": naviga_offsetTop - scrollTop + "px" }); } }
+            function onload_function() { naviga_offsetTop = jQuery("#nav_show_top_stop").position().top; jQuery(window).bind("scroll", naviga_stay_top); jQuery(window).bind("mousewheel", naviga_stay_top); jQuery(document).bind("scroll", naviga_stay_top); jQuery(document).bind("mousewheel", naviga_stay_top); } jQuery(document).ready(onload_function);
+
+        }, 200);
+    
+(window.cproArray = window.cproArray || []).push({ id: "u2734128" });  
+
+
+                       /*PC端-博客内容页左侧Button2-200*200-2017/7/10*/
+                       (window.cproArray = window.cproArray || []).push({ id: "u3031287" });
+
+
+
+
+
+
+
+
+    $(function () {
+        function __get_code_toolbar(snippet_id) {
+            return $("<span class='tracking-ad' data-mod='popu_167'><a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "' target='_blank' title='在CODE上查看代码片'  style='text-indent:0;'><img src='https://code.csdn.net/assets/CODE_ico.png' width=12 height=12 alt='在CODE上查看代码片' style='position:relative;top:1px;left:2px;'/></a></span>"
+                    + "<span class='tracking-ad' data-mod='popu_170'><a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "/fork' target='_blank' title='派生到我的代码片' style='text-indent:0;'><img src='https://code.csdn.net/assets/ico_fork.svg' width=12 height=12 alt='派生到我的代码片' style='position:relative;top:2px;left:2px;'/></a></span>");
+        }
+        
+        $("[code_snippet_id]").each(function () {
+            __s_id = $(this).attr("code_snippet_id");
+            if (__s_id != null && __s_id != "" && __s_id != 0 && parseInt(__s_id) > 70020) {
+                __code_tool = __get_code_toolbar(__s_id);
+                $(this).prev().find(".tools").append(__code_tool);
+            }
+        });
+
+        $(".bar").show();
+    });
+
+
+
+
+
+
+              //$(function () {
+              //    setTimeout(function () {
+              //        var searchtitletags = articletitle + ',' + $("#tags").html();
+              //        searchService({
+              //            index: 'blog',
+              //            query: searchtitletags,
+              //            from: 5,
+              //            size: 5,
+              //            appendTo: '#res',
+              //            url: 'recommend',
+              //            his: 2,
+              //            client: "blog_cf_enhance",
+              //            tmpl: '<dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;"><a href="#{ url }" title="#{ title }" strategy="#{ strategy }">#{ title }</a></dd>'
+              //        });
+              //    }, 1000);
+              //});
+
+         
+
+
+
+
+
+document.getElementById("adJs52b5334").src = "http://ads.csdn.net/js/opt/52b5334.js?t=" + Math.random();
+
+
+
+
+            收藏助手
+            
+
+
+
+
+
+            $(function () {
+                var fromjs = $("#fromjs");
+                if (fromjs.length > 0) {
+                    $("#fromjs .markdown_views pre").addClass("prettyprint");
+                    prettyPrint();
+
+                    $('pre.prettyprint code').each(function () {
+                        var lines = $(this).text().split('\n').length;
+                        var $numbering = $('<ul/>').addClass('pre-numbering').hide();
+                        $(this).addClass('has-numbering').parent().append($numbering);
+                        for (i = 1; i <= lines; i++) {
+                            $numbering.append($('<li/>').text(i));
+                        };
+                        $numbering.fadeIn(1700);
+                    });
+
+                    $('.pre-numbering li').css("color", "#999");
+                }
+            });
+
+            $(".markdown_views a[target!='_blank']").attr("target", "_blank");
+
+            //$(".toc a[target='_blank']").attr("target", "");
+
+            setTimeout(function () {
+                $(".toc a[target='_blank']").attr("target", "");
+            }, 500);
+
+        
+
+
