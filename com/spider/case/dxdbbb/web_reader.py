@@ -1,5 +1,7 @@
 import requests
 import fnmatch
+import os
+import sys
 
 class web_reader:
     def __init__(self,req_source,req_url):
@@ -7,7 +9,7 @@ class web_reader:
         self.req_url = req_url
 
     # 爬取页面信息
-    def request_json_fmt(self):
+    def _request_json_fmt(self):
         with open(self.req_source,'rt') as f:
             # return "{"+",".join(["\"" + line.split(':')[0].strip() + "\":" + "\"" + line.split(':')[1].strip() + "\"" for line  in f.readlines()])+"}"
             # return ",".join(["\"" + line.split(':')[0].strip() + "\":" + "\"" + line.split(':')[1].strip() + "\"" for line in f.readlines()])
@@ -16,13 +18,13 @@ class web_reader:
                         continue
                     try:
                         # yield "\"" + line.split(': ')[0].strip() + "\":" + "\"" + line.split(': ')[1].strip() + "\""
-                        yield line.split(': ')[0],line.split(': ')[1]
+                        yield line.split(': ')[0],line.split(': ')[1].replace('\n','')
                     except IndexError:
                         print('==')
                         # print(line)
                # yield
 
-    def request_json_fmt_Cookie(self):
+    def _request_json_fmt_Cookie(self):
         with open(self.req_source,'rt') as f:
             # return "{"+",".join(["\"" + line.split(':')[0].strip() + "\":" + "\"" + line.split(':')[1].strip() + "\"" for line  in f.readlines()])+"}"
             # return ",".join(["\"" + line.split(':')[0].strip() + "\":" + "\"" + line.split(':')[1].strip() + "\"" for line in f.readlines()])
@@ -33,21 +35,25 @@ class web_reader:
                         return line.split(': ')[1]
                # yield
 
-    def con_cookie(self):
-        for cookies in self.request_json_fmt_Cookie().split('; '):
+    def _con_cookie(self):
+        for cookies in self._request_json_fmt_Cookie().split('; '):
             yield cookies.split('=')[0].strip(),cookies.split('=')[1].strip()
 
     def dxdbbb_req(self):
         # params = eval("{"+','.join(request_json_fmt())+"}")
 
-        params = dict((key,value) for key,value in self.request_json_fmt())
+        params1 = dict((key,value) for key,value in self._request_json_fmt())
 
-        cookies =  params = dict((key,value) for key,value in self.con_cookie())
+        cookies =dict((key,value) for key,value in self._con_cookie())
 
-        # print(cookies)
-        html = requests.get(self.req_url, headers=params, cookies=dict(cookies),timeout=5).text
+        print(params1)
+        print(cookies)
+        print(self.req_url)
+        return requests.get(self.req_url, headers=params1, cookies=dict(cookies),timeout=10)
         # print(html)
-        return html
+
+
+
 # print(','.join(request_json_fmt()))
 #
 

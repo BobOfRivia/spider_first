@@ -13,7 +13,7 @@ def news_page_iter(c,n):
     url_path = 'http://www.dxdbbb.com/forum-249-{}.html'
 
     # < a href = "forum-249-102.html" class ="last"
-    page1 = web_reader(req_source,'http://www.dxdbbb.com/forum-249-1.html').dxdbbb_req()
+    page1 = web_reader(req_source,'http://www.dxdbbb.com/forum-249-1.html').dxdbbb_req().text
     soup = BeautifulSoup(page1).select('.last')[0]
     patt = re.compile(r'\d+')
     page_count = int(patt.findall(soup.text)[0])
@@ -28,7 +28,7 @@ def news_page_iter(c,n):
             # pageurl= 'http://www.dxdbbb.com/forum-249-{}.html'.format(now_page)
             # print(pageurl)
             webreader =  web_reader(req_source, url_path.format(now_page))
-            this_list_page =  webreader.dxdbbb_req()
+            this_list_page =  webreader.dxdbbb_req().text
             sp = str(BeautifulSoup(this_list_page).select('.common em + a'))+str(BeautifulSoup(this_list_page).select('.lock em + a'))
 
             page_urls = re.findall(r'href=\"(.*?)\"', sp)
@@ -54,7 +54,7 @@ def test_one_page():
     url_list_source = '../../source/dxdbbb/new_url_list'
     print(pageurl)
     webreader = web_reader(req_source, pageurl)
-    this_list_page = webreader.dxdbbb_req()
+    this_list_page = webreader.dxdbbb_req().text
     page  = BeautifulSoup(this_list_page)
     print(page)
     sp = str(page.select('.common em + a'))+str(page.select('.lock em + a'))
@@ -77,14 +77,18 @@ import threading
 # n = 3
 # i=1
 # while i < n:
-t1 = threading.Thread(target=news_page_iter,args=(3,1))
-t2 = threading.Thread(target=news_page_iter,args=(3,2))
-t3 = threading.Thread(target=news_page_iter,args=(3,3))
+t1 = threading.Thread(target=news_page_iter,args=(5,1))
+t2 = threading.Thread(target=news_page_iter,args=(5,2))
+t3 = threading.Thread(target=news_page_iter,args=(5,3))
+t4 = threading.Thread(target=news_page_iter,args=(5,4))
+t5 = threading.Thread(target=news_page_iter,args=(5,5))
     # i += 1
 
 t1.start()
 t2.start()
 t3.start()
+t4.start()
+t5.start()
 
 # test_one_page()
 

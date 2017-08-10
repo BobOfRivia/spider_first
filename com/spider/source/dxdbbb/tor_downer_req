@@ -1,0 +1,9 @@
+Host: www.dxdbbb.com
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent : Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,zh;q=0.8
+Upgrade-Insecure-Requests: 1
+Cookie: Hm_lvt_a89a192c6cfd9ef05cae2c787a7bcc96=1483544657; boa8_2132_saltkey=Z6uuf3ou; boa8_2132_lastvisit=1501843938; boa8_2132_visitedfid=249D161D162D232D46; boa8_2132_connect_last_report_time=2017-08-05; boa8_2132_auth=11f1O4nG77zUumlSR7%2Bx2QYaGjTwmft7WUUy5eVhPdkYI%2F%2BxDXaxUQb4TV96ySAnpZSY6cPOKUAkSMOIzbJGH%2BzwmfvL; boa8_2132_lastcheckfeed=1064893%7C1501895559; boa8_2132_lip=58.240.221.24%2C1501895559; flexsns_sky_userinfo=2782COo6hK3jytvsEVXFhbcyLWfv8GCEbFYjC%2FeyhpI8y%2BwDv0mUGq4Or9NtnaPc0Yl1r%2BhVwyR7mT6EHNNIA10cX8N3y5Z1Wytionk6qBuSk1dlDavvvb19TqnB; PHPSESSID=638add2c561f1cca95546249d9aad265; boa8_2132_forum_lastvisit=D_46_1501851624D_232_1501852384D_162_1501852480D_161_1501852483D_248_1501895567D_249_1501895568; boa8_2132_viewid=tid_176671; boa8_2132_reward=dd06JIO2ok%2B5APOBek0LYag%2BkLqaXnp11jy8dpnj9gt%2F47393PrJn77SXJSH%2F1thF%2F0qhD4kZRqXezs; boa8_2132_ulastactivity=1501899198%7C0; Hm_lvt_a89a192c6cfd9ef05cae2c787a7bcc96=; Hm_lpvt_a89a192c6cfd9ef05cae2c787a7bcc96=1501899194; boa8_2132_smile=5D1; boa8_2132_sendmail=1; boa8_2132_lastact=1501901053%09forum.php%09attachment; boa8_2132_connect_is_bind=1
