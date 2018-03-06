@@ -38,3 +38,13 @@ class mysql_bean:
             t, v, tb = sys.exc_info()
             print(t, v)
 
+    def sql_query(self,sql_str):
+        print(sql_str)
+        try:
+            result = self.db.query(sql_str)
+            return result;
+        except:
+            t, v, tb = sys.exc_info()
+            print(t, v)
+
+
