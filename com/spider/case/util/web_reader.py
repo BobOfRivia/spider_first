@@ -1,7 +1,5 @@
 import requests
 import fnmatch
-import os
-import sys
 
 class web_reader:
     def __init__(self,req_source,req_url):

@@ -8,3 +8,4 @@ Lib：BeautifulSoup、threading、os、urllib.request
 
 总结：
 1.犯了一个错误，线程数设置为10  实际上应该根据CPU核数选择，针对个人笔记本约3-4个线程比较合理
+https://www.cnblogs.com/dennyzhangdd/p/6909771.html?utm_source=itdadao&utm_medium=referral
