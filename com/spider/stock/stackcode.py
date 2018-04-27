@@ -16,7 +16,7 @@ def getcodeList(html:str):
     code = pat.findall(html)
     return code
 
-# [('201000', 'R003'), ('201001', 'R007')]
+# [('20 1000', 'R003'), ('201001', 'R007')]
 def writeToDB(list):
     import pymysql
     import sys
