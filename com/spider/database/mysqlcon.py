@@ -32,7 +32,7 @@ class mysql_bean:
             with self.db.cursor() as cursor:
                 # 执行sql语句，插入记录
                 self.cursor.execute(sql_str)
-                # 没有设置默认自动提交，需要主动提交，以保存所执行的语句
+                # 没有设置默认自动提交， 需要主动提交，以保存所执行的语句
                 self.db.commit()
         except:
             t, v, tb = sys.exc_info()
