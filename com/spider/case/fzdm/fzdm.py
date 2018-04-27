@@ -7,7 +7,7 @@ import os
 import socket
 from com.spider.case.util.ThreadPool import ThreadPool
 
-#请求 With Retry
+#请求 With  Retry
 def requestWithRetry(url, paramfile, type="gethtml", savepath="", trytime=1):
     import time
     if trytime < 0:
