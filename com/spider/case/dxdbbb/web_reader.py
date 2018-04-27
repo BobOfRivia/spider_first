@@ -8,7 +8,7 @@ class web_reader:
         self.req_source = req_source
         self.req_url = req_url
 
-    # 爬取页面信息
+    # 爬取页 面信息
     def _request_json_fmt(self):
         with open(self.req_source,'rt') as f:
             # return "{"+",".join(["\"" + line.split(':')[0].strip() + "\":" + "\"" + line.split(':')[1].strip() + "\"" for line  in f.readlines()])+"}"
