@@ -7,7 +7,7 @@ def news_page_iter(c,n):
     print('runing_thread_is_number{}'.format(n))
     # 请求信息
     req_source = '../../source/dxdbbb/new_list_reqhead'
-    # url存储路径
+    # url存储 路径
     url_list_source  = '../../source/dxdbbb/new_url_list'
     # 请求路径
     url_path = 'http://www.dxdbbb.com/forum-249-{}.html'
