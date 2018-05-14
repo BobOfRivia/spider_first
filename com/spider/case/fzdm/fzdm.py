@@ -46,7 +46,7 @@ def readcharpterPages(href0,thisPath,url1,pool):
             html3 = requestWithRetry(url2 + indexname % num, "./request-params")
             # html3 = web_reader("./request-params", url2+indexname % num).web_req().text
             try:
-                picurl = "http://p0.xiaoshidi.net" + "/" + re.findall(r'var mhurl = \"(.*?)\"', str(html3))[0]
+                picurl = "http://p1.xiaoshidi.net" + "/" + re.findall(r'var mhurl = \"(.*?)\"', str(html3))[0]
             except:
                 t, v, tb = sys.exc_info()
                 print(t, v)
@@ -62,7 +62,7 @@ if __name__ == '__main__':
     socket.setdefaulttimeout(10)
     homepage = "http://manhua.fzdm.com/"
     indexname = "/index_%s.html"
-    path = "D://fzdm-commic"
+    path = "/Users/guhongjie/Documents/fzdm-commic"
     filePath = path + "/%s"
     if not os.path.exists(path):
         os.mkdir(path)
@@ -93,8 +93,8 @@ if __name__ == '__main__':
             if "#" in href0 or "." in href0:
                 continue
             else:
-                # if "海贼王" in commicName and href0.replace("/","",1).isdigit() and int(href0.replace("/","",1))>580 :
-                #     continue
+                if "我的英雄学院" not in commicName :
+                     continue
                 t=threadpool.getThread()
                 a=t(target=readcharpterPages, args=(href0, thisPath, url1,threadpool))
                 a.start()

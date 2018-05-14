@@ -1,9 +1,9 @@
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
 Accept-Encoding: gzip, deflate
-Accept-Language: zh-CN,zh;q=0.9,zh-TW;q=0.8
+Accept-Language: zh-CN,zh;q=0.9
 Cache-Control: max-age=0
 Connection: keep-alive
-Cookie: __utma=182137712.1919860715.1524213033.1524213033.1524213033.1; __utmc=182137712; __utmz=182137712.1524213033.1.1.utmcsr=baidu|utmccn=(organic)|utmcmd=organic; picHost=p1.xiaoshidi.net; Hm_lvt_cb51090e9c10cda176f81a7fa92c3dfc=1522505637,1524213032,1524213079; __utmb=182137712.17.10.1524213033; Hm_lpvt_cb51090e9c10cda176f81a7fa92c3dfc=1524213316
+Cookie: Hm_lvt_cb51090e9c10cda176f81a7fa92c3dfc=1524930032; __utma=182137712.1838758736.1524930032.1524930032.1524930032.1; __utmc=182137712; __utmz=182137712.1524930032.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utmt=1; picHost=183.91.33.78/p1.xiaoshidi.net; Hm_lpvt_cb51090e9c10cda176f81a7fa92c3dfc=1524930061; __utmb=182137712.3.10.1524930032
 Host: manhua.fzdm.com
 Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36
