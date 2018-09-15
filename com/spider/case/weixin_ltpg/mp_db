@@ -1,0 +1,14 @@
+import json
+
+
+def write_to_mysql(obj_list):
+    import pymysql
+    conn = pymysql.Connect(host='127.0.0.1', user='root', password='sxd5a5dwg', port='3306', database="spider", charset="utf8")
+    batchsql = "insert into user_card values (nextval('u_card_seq'),1,1,1,1,1,1,1,1)"
+    for obj in obj_list:
+        batchsql.format()
+
+if __name__ == '__main__':
+    with open('','rt') as f:
+        for line in f.readlines():
+            objs = json.loads(line)

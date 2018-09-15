@@ -1,6 +1,7 @@
 import requests
 import fnmatch
 
+
 class web_reader:
     def __init__(self,req_source,req_url):
         self.req_source = req_source
@@ -9,7 +10,7 @@ class web_reader:
     # 爬取页面信息
     def _request_json_fmt(self):
         with open(self.req_source,'rt') as f:
-                for line in f.readlines() :
+                for line in f.readlines():
                     if(fnmatch.fnmatchcase(line,'Cookie')):
                         continue
                     try:
@@ -24,7 +25,6 @@ class web_reader:
                         continue
                     else :
                         return line.split(': ')[1]
-               # yield
 
     def _con_cookie(self):
         for cookies in self._request_json_fmt_Cookie().split('; '):
@@ -34,8 +34,6 @@ class web_reader:
 
         params1 = dict((key,value) for key,value in self._request_json_fmt())
 
-        #cookies =dict((key,value) for key,value in self._con_cookie())
-
-        return requests.get(self.req_url, headers=params1,timeout=timeout,verify=False)
+        return requests.get(self.req_url, headers=params1, cookies=dict(cookies),timeout=timeout)
 
 

@@ -1,0 +1,10 @@
+authority: mdskip.taobao.com
+method: GET
+path: /core/initItemDetail.htm?isUseInventoryCenter=true&cartEnable=true&service3C=false&isApparel=false&isSecKill=false&tmallBuySupport=true&isAreaSell=true&tryBeforeBuy=false&offlineShop=false&itemId=535682548403&showShopProm=false&cachedTimestamp=1527489427600&isPurchaseMallPage=false&isRegionLevel=true&household=false&sellerPreview=false&queryMemberRight=true&addressLevel=3&isForbidBuyItem=false&callback=onMdskip&ref=&brandSiteId=0&isg=null&isg2=BHNzK02lLBES_-BFeQS3EgLuAnFdAAd-LTw1ISUQzxLJJJPGrXiXutHV21TKr19i
+scheme: https
+accept: */*
+accept-encoding: gzip, deflate, br
+accept-language: zh-CN,zh;q=0.9
+cookie: thw=cn; cna=ZsdoE6tgrA8CAd5dzcopGQog; t=2525fa4e41f63bfc729bea1fe82d7f0b; hng=CN%7Czh-CN%7CCNY%7C156; enc=sxPIOdPfO%2B35bKZ57xTKkOZht5FKjQTqMm4pM4TXYrQT8yDygQ%2FRs50CKpvd2VHN7cNZbY4QItZKFdr7R%2F2YKg%3D%3D; mt=ci%3D-1_1; UM_distinctid=163954eea2bf13-0ead3f514db1a4-336b7706-1aeaa0-163954eea2c92a; v=0; cookie2=386f8c7019613e2e946ad72a18902466; _tb_token_=533eee376b681; _m_h5_tk=c5426dff7aac2a1fe514c78446d183b0_1527477050575; _m_h5_tk_enc=ada75ebaa0be7fff71c6ec98a039af64; isg=BBkZP7XnpoP6DXob0ypoARh_KAMzDg1MG5pPUzvPqMFoQj3Ug_cPKdQQQQY0eqWQ
+referer: https://chaoshi.detail.tmall.com/item.htm?spm=a230r.1.14.337.7f817c75e6Z7Zg&id=535682548403&ns=1&abbucket=4
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36

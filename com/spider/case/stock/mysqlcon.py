@@ -8,7 +8,7 @@ class mysql_bean:
             'host': '127.0.0.1',
             'port': 3306,
             'user': 'root',
-            'password': '541325',
+            'password': 'sxd5a5dwg',
             'db': 'lifeblog',
             'charset': 'utf8',
             'cursorclass': pymysql.cursors.DictCursor,

@@ -1,0 +1,10 @@
+authority: list.taobao.com
+method: GET
+path: /itemlist/huichi2014.htm?_input_charset=utf-8&json=on&cat=50002766%2C50035978%2C50008825%2C50042258%2C50103282%2C50103280%2C50106154%2C50108542&user_type=0&at=45634&viewIndex=1&as=0&atype=b&style=grid&same_info=1&isnew=2&tid=0&pSize=95&data-key=cat&data-value=50002766&data-action&module=cat&_ksTS=1527647731570_215&callback=jsonp216
+scheme: https
+accept: */*
+accept-encoding: gzip, deflate, br
+accept-language: zh-CN,zh;q=0.9
+cookie: thw=cn; v=0; t=a3f74093cfa1806ccd3c49e62a68fce9; cookie2=32dff9a727e90d7bfd97cd1b57f2ee5c; _tb_token_=fb98153eee55a; cna=8O6UE5+5mT0CAXBQN5bY2YYw; enc=EhdGla%2FUKefl8ffFV5GG9c%2BjWEAGnajRDVSOEXOSa%2FDH98L0zPlx7wO18pY9hPPdNR%2BWbGpfh4a2KmGvGdlH9A%3D%3D; hng=CN%7Czh-CN%7CCNY%7C156; mt=ci%3D-1_1; _m_h5_tk=6a563ba1fe6852c3705701c652622969_1527648515407; _m_h5_tk_enc=80b11aba75853381004b341e5a95cb64; isg=BO3tuUXSSkIW3S4un0F5PWuG_I-n4iEIR377Ty_y2QTzpgxY95qM7NQwlHpAJjnU
+referer: https://chi.taobao.com/itemlist/huichi2014.htm?cat=50002766%2C50035978%2C50008825%2C50042258%2C50103282%2C50103280%2C50106154%2C50108542&user_type=0&at=45634&viewIndex=1&as=0&atype=b&style=grid&same_info=1&isnew=2&tid=0&_input_charset=utf-8
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36

@@ -1,0 +1,11 @@
+authority: s.taobao.com
+method: GET
+path: /search?q=%E9%9B%B6%E9%A3%9F&imgfile=&js=1&stats_click=search_radio_all%3A1&initiative_id=staobaoz_20180528&ie=utf8&bcoffset=13&p4ppushleft=1%2C48&ntoffset=13&s=0&sort=renqi-des
+scheme: https
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+accept-encoding: gzip, deflate, br
+accept-language: en-US,en;q=0.9
+cache-control: max-age=0
+cookie: thw=cn; t=a3f74093cfa1806ccd3c49e62a68fce9; cna=8O6UE5+5mT0CAXBQN5bY2YYw; hng=CN%7Czh-CN%7CCNY%7C156; _m_h5_tk=ae796a9f2c21dbe8830cfd4a28f105d1_1527665238159; _m_h5_tk_enc=9b7701f9af32780f29d3c2f91c3591ac; uc3=nk2=hFKXmwFlQ6lVrvFS&id2=VADZ6p1SXvT1&vt3=F8dBzrwIa7vnKtG3i7I%3D&lg2=URm48syIIVrSKA%3D%3D; lgc=%5Cu7EEF%5Cu7EA2%5Cu796D%5Cu793C%5Cu4E4B%5Cu86C7; tracknick=%5Cu7EEF%5Cu7EA2%5Cu796D%5Cu793C%5Cu4E4B%5Cu86C7; _cc_=VFC%2FuZ9ajQ%3D%3D; tg=0; mt=ci=0_1; enc=LtFZeJRQN7uDcfgNxFxvbPZMkCjM0lBd4v8MNijTtqZsx91NEz2Bk%2BeuM4hY1VZBgj1ui3n7ByPZxfI0ZsWnNg%3D%3D; v=0; cookie2=479b62d27a3ffb38d650be47e7cc1d2e; _tb_token_=4e3e133af3b7; birthday_displayed=1; alitrackid=www.taobao.com; lastalitrackid=www.taobao.com; UM_distinctid=163b42c8c2c904-0d9d39719efa06-336b7706-1aeaa0-163b42c8c2ecb9; JSESSIONID=0C990E056AA00D07E9C96EF056BBC197; uc1=cookie14=UoTeOZOTbTjAmw%3D%3D; isg=BBERSFFZLi9cD0I6Y7WdgW-aIBtr1oXkw_JXu_OmNVjbmjHsO86VwL_wOGZ8kh0o
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36
